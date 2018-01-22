@@ -1,0 +1,28 @@
+{
+  "name": "es-viz",
+  "version": "0.0.1",
+  "description": "JavaScript Code Visualizer",
+  "author": "luochen1990",
+  "license": "MIT",
+  "homepage": "http://github.com/luochen1990/es-viz",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:luochen1990/es-viz.git"
+  },
+  "keywords": [
+    "visualization",
+    "dependency",
+    "code"
+  ],
+  "main": "./lib/main.js",
+  "scripts": {
+    "prepare": "rm -r lib && coffee -o lib -c src && sleep 1"
+  },
+  "dependencies": {
+    "ast-reducer": "^0.1.1",
+    "esprima": "^4.0.0"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.12.7"
+  }
+}
