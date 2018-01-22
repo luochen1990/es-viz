@@ -11,7 +11,7 @@ Install
 -------
 
 ```
-npm install es-viz
+npm install @luochen1990/es-viz
 ```
 
 Usage
