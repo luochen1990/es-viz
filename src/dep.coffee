@@ -126,6 +126,10 @@ if module.parent is null
     log -> dep '(a, b) => a + b + c'
     log -> dep ''
     log -> dep 'obj = {x: a, y: b}'
+    log -> dep 'const inc = (y) => x = x + y'
+    log -> dep 'var x = 1; const inc = (y) => x = x + y'
+    log -> dep 'var a; a = b + c'
+    log -> dep 'var a; a = a + b + c'
   catch e
     log -> e.stack
     log -> e.cause.stack
