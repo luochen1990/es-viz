@@ -1,0 +1,128 @@
+{
+    "nodes": [
+        {
+            "id": "a",
+            "group": 1,
+            "inDegree": 0,
+            "outDegree": 3
+        },
+        {
+            "id": "b",
+            "group": 1,
+            "inDegree": 1,
+            "outDegree": 1
+        },
+        {
+            "id": "c",
+            "group": 1,
+            "inDegree": 1,
+            "outDegree": 2
+        },
+        {
+            "id": "d",
+            "group": 1,
+            "inDegree": 3,
+            "outDegree": 0
+        },
+        {
+            "id": "add",
+            "group": 1,
+            "inDegree": 2,
+            "outDegree": 0
+        },
+        {
+            "id": "f",
+            "group": 1,
+            "inDegree": 0,
+            "outDegree": 1
+        },
+        {
+            "id": "w",
+            "group": 1,
+            "inDegree": 0,
+            "outDegree": 3
+        },
+        {
+            "id": "x",
+            "group": 1,
+            "inDegree": 1,
+            "outDegree": 0
+        },
+        {
+            "id": "y",
+            "group": 1,
+            "inDegree": 1,
+            "outDegree": 0
+        },
+        {
+            "id": "z",
+            "group": 1,
+            "inDegree": 1,
+            "outDegree": 0
+        },
+        {
+            "id": "u",
+            "group": 1,
+            "inDegree": 0,
+            "outDegree": 0
+        },
+        {
+            "id": "v",
+            "group": 1,
+            "inDegree": 0,
+            "outDegree": 0
+        }
+    ],
+    "links": [
+        {
+            "source": "a",
+            "target": "b",
+            "value": 1
+        },
+        {
+            "source": "a",
+            "target": "c",
+            "value": 1
+        },
+        {
+            "source": "a",
+            "target": "d",
+            "value": 1
+        },
+        {
+            "source": "b",
+            "target": "d",
+            "value": 1
+        },
+        {
+            "source": "c",
+            "target": "d",
+            "value": 1
+        },
+        {
+            "source": "c",
+            "target": "add",
+            "value": 1
+        },
+        {
+            "source": "f",
+            "target": "add",
+            "value": 1
+        },
+        {
+            "source": "w",
+            "target": "x",
+            "value": 1
+        },
+        {
+            "source": "w",
+            "target": "y",
+            "value": 1
+        },
+        {
+            "source": "w",
+            "target": "z",
+            "value": 1
+        }
+    ]
+}
