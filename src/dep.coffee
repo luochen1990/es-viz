@@ -7,7 +7,7 @@ _Set = {
   singleton: (a) ->  new Set([a])
   union: (b) -> (a) -> r = new Set(b); a.forEach((x) -> r.add(x)); r #b.union(a)
   unionAll: (ss) -> ss.reduce(((a, r) -> _Set.union(a)(r)), _Set.empty)
-  except: (a) -> (b) -> r = new Set(b); a.forEach((x) -> r.delete(x)); r #a.difference(b)
+  except: (a) -> (b) -> r = new Set(b); a.forEach((x) -> r.delete(x)); r #b.difference(a)
 }
 
 Dep = {
@@ -21,7 +21,8 @@ Dep = {
 
 parseNode = ((x) -> {rule: (x?.type ? 'null'), arg: x})
 depReducer = defineReducer({name: 'Dep', parseNode}) (impl) ->
-  funcExpr = ({id, params, body}) -> Dep.union(Dep.shift(@(id)))(Dep.reduce(Dep.union(Dep.shift(Dep.reduce(Dep.unionAll(params.map(@)))))(@(body))))
+  funcExpr = ({id, params, body}) ->
+    Dep.union(Dep.shift(@(id)))(Dep.reduce(Dep.union(Dep.shift(Dep.unionAll(params.map(@))))(@(body))))
 
   impl('null') () -> Dep.empty
   impl('File') ({program}) -> @(program)
