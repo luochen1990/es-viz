@@ -54,6 +54,16 @@ depReducer = defineReducer({name: 'Dep', parseNode}) (impl) ->
   impl('WhileStatement') ({test, body}) -> Dep.union(@(test))(@(body))
   impl('DoWhileStatement') ({body, test}) -> Dep.union(@(body))(@(test))
   impl('UpdateExpression') ({operator, argument, prefix}) -> @(argument)
+  impl('NewExpression') ({callee, arguments: args}) -> Dep.union(@(callee))(Dep.unionAll(args.map(@)))
+  impl('TryStatement') ({block, handler, finalizer}) -> Dep.union(@(block)) Dep.union(@(handler)) @(finalizer)
+  impl('CatchClause') ({param, body}) -> Dep.reduce(Dep.union(Dep.shift(@(param)))(@(body)))
+  impl('ObjectPattern') ({properties}) -> Dep.unionAll(properties.map(@))
+  #impl('AssignmentProperty') ({value}) -> @(value)
+  impl('ArrayPattern') ({elements}) -> Dep.unionAll(elements.map(@))
+  impl('RestElement') ({argument}) -> @(argument)
+  impl('TemplateLiteral') ({quasis, expressions}) -> Dep.unionAll(expressions.map(@))
+  #impl('TaggedTemplateExpression') ({tag, quasi}) ->
+  #impl('TemplateElement') ({tail, value}) ->
 
 dep = (i) ->
   _ast = if typeof i is 'string' then esprima.parseScript(i) else i
