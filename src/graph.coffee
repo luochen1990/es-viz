@@ -15,7 +15,7 @@ genGraph = (asts) ->
   links = list map(([source, target]) -> {source, target, value: 1}) concat deps.map(({dec, dep}) -> list cartProd(dec, dep))
   outDeg = fromList map((g) -> [head(g).source, length(g)]) groupOn(pluck 'source') links
   inDeg = fromList map((g) -> [head(g).target, length(g)]) groupOn(pluck 'target') links
-  nodes = list map((i) -> {id: i, group: 1, inDegree: (inDeg[i] ? 0), outDegree: (outDeg[i] ? 0)}) uniqueOn(identity) concat deps.map(({dec, dep}) -> concat([dec, dep]))
+  nodes = list map((id) -> (i = inDeg[id] ? 0); (o = outDeg[id] ? 0); {id, group: (!i + !o * 2), inDegree: i, outDegree: o}) uniqueOn(identity) concat deps.map(({dec, dep}) -> concat([dec, dep]))
   return {nodes, links}
 
 module.exports = {genGraph}
@@ -33,6 +33,6 @@ if module.parent is null
   g0 = genGraph asts
   log -> g0
 
-  fs = require('fs')
-  fs.writeFileSync("./graph.json", prettyJson(g0))
+  #fs = require('fs')
+  #fs.writeFileSync("./graph.json", prettyJson(g0))
 
